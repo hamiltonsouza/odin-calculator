@@ -5,3 +5,7 @@ function add(firstAddend,secondAddend) {
 function subtract(minuend,subtrahend) {
     return minuend - subtrahend;
 };
+
+function multiply(multiplier,multiplicand) {
+    return multiplier * multiplicand;
+};
