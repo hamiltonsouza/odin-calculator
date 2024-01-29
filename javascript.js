@@ -23,7 +23,7 @@ function divide(dividend,divisor) {
     return result;
 };
 
-function operation(firstTerm,operator,secondTerm) {
+function operate(firstTerm,operator,secondTerm) {
     switch(operator) {
         case '+':
             add(firstTerm,secondTerm);
