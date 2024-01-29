@@ -13,3 +13,7 @@ function multiply(multiplier,multiplicand) {
 function divide(dividend,divisor) {
     return dividend,divisor;
 };
+
+let firstTerm = 0;
+let operator = 0;
+let secondTerm = 0;
