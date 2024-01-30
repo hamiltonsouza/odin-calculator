@@ -1,7 +1,7 @@
-let result = 0;
-let firstTerm = 0;
-let operator = 0;
-let secondTerm = 0;
+let result = null;
+let firstTerm = null;
+let operator = null;
+let secondTerm = null;
 
 function add(firstAddend,secondAddend) {
     result = firstAddend + secondAddend;
@@ -39,13 +39,19 @@ function operate(firstTerm,operator,secondTerm) {
             return result;
         default:
             return result;
-    }
+    };
 };
 
 function display(displayContent) {
     displayValue.textContent += displayContent;
 };
 
-const displayValue = document.getElementById('display');
+function clearDisplay() {
+    displayValue.textContent = '';
+};
+
 const numberButtons = document.querySelectorAll('.number');
 for (i of numberButtons) {i.addEventListener('click', function () {display(this.textContent)})};
+
+const operatorButtons = document.querySelectorAll('.operator');
+for (i of operatorButtons) {i.addEventListener('click', function () {operator = this.textContent;})};
