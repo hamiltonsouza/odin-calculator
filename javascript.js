@@ -42,10 +42,13 @@ function operate(firstTerm,operator,secondTerm) {
     };
 };
 
+const displayValue = document.getElementById('display');
 function display(displayContent) {
     displayValue.textContent += displayContent;
 };
 
+const allClearButton = document.getElementById('all-clear');
+allClearButton.addEventListener('click', clearDisplay);
 function clearDisplay() {
     displayValue.textContent = '';
 };
