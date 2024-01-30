@@ -41,3 +41,11 @@ function operate(firstTerm,operator,secondTerm) {
             return result;
     }
 };
+
+function display(displayContent) {
+    displayValue.textContent += displayContent;
+};
+
+const displayValue = document.getElementById('display');
+const numberButtons = document.querySelectorAll('.number');
+for (i of numberButtons) {i.addEventListener('click', function () {display(this.textContent)})};
