@@ -43,18 +43,20 @@ function operate(firstTerm,operator,secondTerm) {
 };
 
 const displayValue = document.getElementById('display');
-function display(displayContent) {
-    displayValue.textContent += displayContent;
-};
 
 const allClearButton = document.getElementById('all-clear');
-allClearButton.addEventListener('click', clearDisplay);
-function clearDisplay() {
+allClearButton.addEventListener('click', allClear);
+function allClear() {
+    result = null;
+    firstTerm = null;
+    operator = null;
+    secondTerm = null;
     displayValue.textContent = '';
 };
 
 const numberButtons = document.querySelectorAll('.number');
-for (i of numberButtons) {i.addEventListener('click', function () {display(this.textContent)})};
+for (i of numberButtons) {i.addEventListener('click', function () {displayValue.textContent += this.textContent})};
 
 const operatorButtons = document.querySelectorAll('.operator');
-for (i of operatorButtons) {i.addEventListener('click', function () {operator = this.textContent;})};
+for (i of operatorButtons) {i.addEventListener('click', function () {operator = this.textContent})};
+    
