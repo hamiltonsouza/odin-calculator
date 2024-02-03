@@ -54,6 +54,12 @@ function allClear() {
     displayValue.textContent = '';
 };
 
+const equalsButton = document.getElementById('equals');
+        equalsButton.addEventListener('click', equals);
+        function equals() {
+            operate(firstTerm,operator,secondTerm);
+};
+
 const numberButtons = document.querySelectorAll('.number');
 for (i of numberButtons) {i.addEventListener('click', function () {displayValue.textContent += this.textContent})};
 
