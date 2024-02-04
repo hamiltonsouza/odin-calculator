@@ -104,6 +104,12 @@ function decimal() {
     };
 };
 
+const backspaceButton = document.getElementById('backspace');
+backspaceButton.addEventListener('click', backspace);
+function backspace() {
+    displayValue.textContent = displayValue.textContent.slice(0, -1);
+};
+
 const numberButtons = document.querySelectorAll('.number');
 for (i of numberButtons) {i.addEventListener('click', function () {
     if (firstTerm === 'placeholder') {
