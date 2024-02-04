@@ -27,42 +27,91 @@ function operate(firstTerm,operator,secondTerm) {
     switch(operator) {
         case '+':
             add(firstTerm,secondTerm);
+            clearTermsAfterOperation();
             return result;
         case '-':
             subtract(firstTerm,secondTerm);
+            clearTermsAfterOperation();
             return result;
         case '*':
             multiply(firstTerm,secondTerm);
+            clearTermsAfterOperation();
             return result;
         case '/':
             divide(firstTerm,secondTerm);
+            clearTermsAfterOperation();
             return result;
         default:
             return result;
     };
 };
 
+function setTerms() {
+    if (firstTerm === null) {
+        firstTerm = parseFloat(displayValue.textContent);
+    } else if (firstTerm !== null) {
+        secondTerm = parseFloat(displayValue.textContent);
+    }
+};
+
 const displayValue = document.getElementById('display');
+
+function clearDisplay() {
+    displayValue.textContent = '';
+};
+
+function clearTermsAfterOperation(){
+    firstTerm = result;
+    secondTerm = null;
+};
+
+function clearOperator() {
+    operator = null;
+};
+
+function defineOperator() {
+    operator = this.textContent;
+};
 
 const allClearButton = document.getElementById('all-clear');
 allClearButton.addEventListener('click', allClear);
 function allClear() {
     result = null;
     firstTerm = null;
-    operator = null;
     secondTerm = null;
-    displayValue.textContent = '';
-};
+    clearOperator();
+    clearDisplay();
+};    
 
 const equalsButton = document.getElementById('equals');
-        equalsButton.addEventListener('click', equals);
-        function equals() {
-            operate(firstTerm,operator,secondTerm);
+equalsButton.addEventListener('click', equals);
+function equals() {
+    setTerms();
+    operate(firstTerm,operator,secondTerm);
+    clearOperator();
+    displayValue.textContent = result;
 };
 
 const numberButtons = document.querySelectorAll('.number');
-for (i of numberButtons) {i.addEventListener('click', function () {displayValue.textContent += this.textContent})};
+for (i of numberButtons) {i.addEventListener('click', function () {
+    if (firstTerm !== null && secondTerm === null) {
+        clearDisplay();
+        displayValue.textContent += this.textContent;
+        secondTerm = 'placeholder';
+    } else {
+        displayValue.textContent += this.textContent;
+    }
+})};
 
 const operatorButtons = document.querySelectorAll('.operator');
-for (i of operatorButtons) {i.addEventListener('click', function () {operator = this.textContent})};
-    
+for (i of operatorButtons) {i.addEventListener('click', function () {
+    if (firstTerm !== null && operator !== null) {
+        equals();
+        defineOperator();
+    } else if (displayValue.textContent === '') {
+        defineOperator();
+    } else if (displayValue.textContent !== '') {
+        setTerms();
+        defineOperator();
+    }
+})};
