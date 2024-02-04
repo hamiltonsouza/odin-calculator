@@ -86,11 +86,23 @@ function equals() {
     operate(firstTerm,operator,secondTerm);
     clearOperator();
     displayValue.textContent = result;
+    firstTerm = 'placeholder';
+};
+
+function operatorEquals() {
+    setTerms();
+    operate(firstTerm,operator,secondTerm);
+    clearOperator();
+    displayValue.textContent = result;
 };
 
 const numberButtons = document.querySelectorAll('.number');
 for (i of numberButtons) {i.addEventListener('click', function () {
-    if (firstTerm !== null && secondTerm === null) {
+    if (firstTerm === 'placeholder') {
+        clearDisplay();
+        displayValue.textContent += this.textContent;
+        firstTerm = null; 
+    } else if (firstTerm !== null && secondTerm === null) {
         clearDisplay();
         displayValue.textContent += this.textContent;
         secondTerm = 'placeholder';
@@ -102,7 +114,7 @@ for (i of numberButtons) {i.addEventListener('click', function () {
 const operatorButtons = document.querySelectorAll('.operator');
 for (i of operatorButtons) {i.addEventListener('click', function () {
     if (firstTerm !== null && operator !== null) {
-        equals();
+        operatorEquals();
         operator = this.textContent;
     } else if (displayValue.textContent === '') {
         operator = this.textContent;
