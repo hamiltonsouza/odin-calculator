@@ -69,10 +69,6 @@ function clearOperator() {
     operator = null;
 };
 
-function defineOperator() {
-    operator = this.textContent;
-};
-
 const allClearButton = document.getElementById('all-clear');
 allClearButton.addEventListener('click', allClear);
 function allClear() {
@@ -107,11 +103,11 @@ const operatorButtons = document.querySelectorAll('.operator');
 for (i of operatorButtons) {i.addEventListener('click', function () {
     if (firstTerm !== null && operator !== null) {
         equals();
-        defineOperator();
+        operator = this.textContent;
     } else if (displayValue.textContent === '') {
-        defineOperator();
+        operator = this.textContent;
     } else if (displayValue.textContent !== '') {
         setTerms();
-        defineOperator();
+        operator = this.textContent;
     }
 })};
