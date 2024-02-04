@@ -96,6 +96,14 @@ function operatorEquals() {
     displayValue.textContent = result;
 };
 
+const decimalButton = document.getElementById('decimal');
+decimalButton.addEventListener('click', decimal);
+function decimal() {
+    if (!displayValue.textContent.includes(".")) {
+        displayValue.textContent += this.textContent;
+    };
+};
+
 const numberButtons = document.querySelectorAll('.number');
 for (i of numberButtons) {i.addEventListener('click', function () {
     if (firstTerm === 'placeholder') {
