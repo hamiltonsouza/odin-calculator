@@ -1,0 +1,1 @@
+In this project I created a simple calculator according to the project proposed by The Odin Project.
