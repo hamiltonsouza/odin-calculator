@@ -28,18 +28,22 @@ function operate(firstTerm,operator,secondTerm) {
         case '+':
             add(firstTerm,secondTerm);
             clearTermsAfterOperation();
+            displayOverflow();
             return result;
         case '-':
             subtract(firstTerm,secondTerm);
             clearTermsAfterOperation();
+            displayOverflow();
             return result;
         case '*':
             multiply(firstTerm,secondTerm);
             clearTermsAfterOperation();
+            displayOverflow();
             return result;
         case '/':
             divide(firstTerm,secondTerm);
             clearTermsAfterOperation();
+            displayOverflow();
             return result;
         default:
             return result;
@@ -59,6 +63,12 @@ const displayValue = document.getElementById('display');
 function clearDisplay() {
     displayValue.textContent = '';
 };
+
+function displayOverflow() {
+    if (result.toString().length > 9) {
+        result = result.toString().slice(0,9);
+    };
+}
 
 function clearTermsAfterOperation(){
     firstTerm = result;
@@ -121,7 +131,9 @@ for (i of numberButtons) {i.addEventListener('click', function () {
         displayValue.textContent += this.textContent;
         secondTerm = 'placeholder';
     } else {
-        displayValue.textContent += this.textContent;
+        if (displayValue.textContent.length < 9) {
+            displayValue.textContent += this.textContent;
+        }
     }
 })};
 
