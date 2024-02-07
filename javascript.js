@@ -125,7 +125,8 @@ for (i of numberButtons) {i.addEventListener('click', function () {
     if (firstTerm === 'placeholder') {
         clearDisplay();
         displayValue.textContent += this.textContent;
-        firstTerm = null; 
+        firstTerm = secondTerm; 
+        secondTerm = displayValue.textContent;
     } else if (firstTerm !== null && secondTerm === null) {
         clearDisplay();
         displayValue.textContent += this.textContent;
