@@ -20,7 +20,8 @@ body {
     border-radius: 15px;
     box-shadow: 
         inset 10px 10px #DCDCDC,
-        inset -10px -10px #CDCDCD;
+        inset -10px -10px #CDCDCD,
+        5px 5px 10px 5px rgba(0,0,0,0.5);
 }
 
 #display{
