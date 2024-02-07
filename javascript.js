@@ -142,8 +142,12 @@ for (i of operatorButtons) {i.addEventListener('click', function () {
     if (firstTerm !== null && operator !== null) {
         operatorEquals();
         operator = this.textContent;
-    } else if (displayValue.textContent === '') {
-        operator = this.textContent;
+    } else if (displayValue.textContent === '' || displayValue.textContent === null) {
+        if (operator === '-') {
+            displayValue.textContent += this.textContent;
+        } else {
+            operator = this.textContent;
+        }
     } else if (displayValue.textContent !== '') {
         setTerms();
         operator = this.textContent;
